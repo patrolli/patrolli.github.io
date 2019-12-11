@@ -183,56 +183,7 @@
         <h1 id="laso-label-set-operations-networks-for-multi-lable-few-shot-learning">0.LaSO: Label-Set Operations networks for multi-lable few-shot learning</h1>
 <h2 id="summary">1. Summary</h2>
 <p>This paper focus on the multi-label few-shot learning, where has no prior work of this task. They proposed Label-Set Operations networks, which can generate new multi-label samples in the feature space, this method can be seen as data augmentation techinques.</p>
-<h2 id="research-objective">2. Research Objective</h2>
-<ul>
-<li>Find a method to solve the <strong>multi-label few-shot learning</strong> task and demonstrate the its utility for this work.</li>
-</ul>
-<h2 id="problem-statement">3. Problem Statement</h2>
-<ul>
-<li>It'a combination of multi-lable classfication task and few-shot learning task. It would train the network on the multi-label training set and validate or test it on the dataset which has the catagories unseen during training.</li>
-<li>Need to use the mAP to evaluate the performance.</li>
-</ul>
-<h2 id="methods">4. Methods</h2>
-<ul>
-<li>Schematic <img src="/2019/12/11/article-2/p1.png">
-<ul>
-<li>feature extractor backbone are pre-trained from training set using networks like InceptonV3, ResNet-34</li>
-<li>LaSO network are implemented as Multi-Layer Perceptrons consisting of 3 or 4 blocks.</li>
-</ul></li>
-<li>steps:
-<ul>
-<li>randomly select a pair of images <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, mapping them into the feature space as <span class="math inline">\(F_X\)</span> and <span class="math inline">\(F_Y\)</span>. <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are corresponding set of multiple labels, <span class="math inline">\(L(X), L(Y) \subseteq\mathcal{L}\)</span></li>
-<li>The LaSO network <span class="math inline">\(M_{int}\)</span>, <span class="math inline">\(M_{uni}\)</span> and <span class="math inline">\(M_{sub}\)</span> receive the concatenated <span class="math inline">\(F_X\)</span> and <span class="math inline">\(F_Y\)</span> and are trained to synthesize feature vectors in the same feature space. That mimic the set operations corresponding intersection, union and subtraction.for example, <span class="math inline">\(M_{int}(F_X,F_Y)=Z_{int}\in\mathcal{F}\)</span>,suppose having generateed a new image <span class="math inline">\(I\)</span>, so the feature vector of <span class="math inline">\(I\)</span> is <span class="math inline">\(Z_{int}\)</span>, the multi-label of <span class="math inline">\(I\)</span> is <span class="math inline">\(L(I)=L(X)\cap L(B)\)</span>, same meaning as the two leaving operations.</li>
-<li>source feature vectors, <span class="math inline">\(F_X\)</span>, <span class="math inline">\(F_Y\)</span>, and the outputs of LaSO networks, namely <span class="math inline">\(Z_{int}\)</span>, <span class="math inline">\(Z_{uni}\)</span>, <span class="math inline">\(Z_{sub}\)</span> are fed into a classifier <span class="math inline">\(C\)</span></li>
-</ul></li>
-<li>loss function:
-<ul>
-<li>Need to train two networks, classifier <span class="math inline">\(C\)</span> and LaSO network. Use the BCE(Binary Cross-Entropy) loss. $BCE(s,l) = -_{i}l_ilog(s_i)+(1-l_i)log(1-(s_i)) $ where vector <span class="math inline">\(s\)</span> being the classifier scores, <span class="math inline">\(l\)</span> being the desired(binary) labels vector, and <span class="math inline">\(i\)</span> the class indices. <span class="math inline">\(C_{loss}=BCE(C(F_X),L(X))+BCE(C(F_Y),L(Y))\)</span> <span class="math inline">\(LaSO_{loss} = BCE(C(Z_{int}),L(X)\cap L(Y))+BCE(C(Z_{uni}),L(X)\cup L(Y)) + BCE(C(Z_{sub}), L(X)\setminus L(Y))\)</span> for the LaSO updates the classifier <span class="math inline">\(C\)</span> is kept fixed and only used for passing gradient backwards.</li>
-<li>add a set of Mean Square Error based restruction losses. First is used to enforce symmetry for the symmetric <em>intersection</em> and <em>union</em> operation. The second is used to reduce of mode collapse.</li>
-</ul></li>
-</ul>
-<h2 id="evaluate">5.Evaluate</h2>
-<ul>
-<li>use batch size of 16, initial learning rate of 0.001, learning rate reduced on loss plateau with factor 0.3. On all compared approaches the classifier trained on each of the episodes were trained using 40 SGD epochs. Use Adam optimizer with parameters(0.9, 0.999)</li>
-<li>evaluate on two datasets: MS-COCO, CelebA<br>
-</li>
-<li>episode construction: Because each image has multiple labels, so to form a episode, we need to ensure that 1 example per category appears in the episode for 1-shot task and 5 examples category appears in the episode for 5-shot task. Due to the random nature of the episodes, this balancing is not always possible.</li>
-</ul>
-<h2 id="conclusion">6.Conclusion</h2>
-<ul>
-<li>LaSO networks can generalize to unseen categories and support their use for performing augmentation synthesis for few-shot multi-label learning</li>
-</ul>
-<h2 id="notes">7.Notes</h2>
-<ul>
-<li>This paper also evaluate the label set manipulation capability of the LaSO networks, to make sure this manipulation is useful.</li>
-<li>This paper also compare the approximations set operations(without training) with LaSO networks.</li>
-<li>Although it is a few-shot learning task, the datasets used to training are huge(MS-COCO, CelebA)...</li>
-</ul>
-<h2 id="reference">8.Reference</h2>
-<ul>
-<li>A. J. Ratner, H. R. Ehrenberg, Z. Hussain, J. Dunnmon, and C. R´e. Learning to Compose Domain-Specific Transforma- tions for Data Augmentation. (Nips), 2017.</li>
-</ul>
-
+        
       
 
       
