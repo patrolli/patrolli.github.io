@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Matching Network for One Shot Learning | patrolli的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0. Matching Network for One Shot Learning ¶1. Summary This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feat">
+  <meta name="description" content="0. Matching Network for One Shot Learning 1. Summary This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into fea">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Matching Network for One Shot Learning">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;article-1&#x2F;index.html">
 <meta property="og:site_name" content="patrolli的博客">
-<meta property="og:description" content="0. Matching Network for One Shot Learning ¶1. Summary This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feat">
+<meta property="og:description" content="0. Matching Network for One Shot Learning 1. Summary This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into fea">
 <meta property="og:image" content="leanote:&#x2F;&#x2F;file&#x2F;getImage?fileId&#x3D;5defb14441286d190c000001">
 <meta property="article:published_time" content="2019-12-11T06:50:49.000Z">
-<meta property="article:modified_time" content="2019-12-11T07:30:24.569Z">
+<meta property="article:modified_time" content="2019-12-11T07:57:34.118Z">
 <meta property="article:author" content="patrolli">
 <meta property="article:tag" content="科研, 论文笔记">
 <meta name="twitter:card" content="summary">
@@ -180,74 +180,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1>0. Matching Network for One Shot Learning</h1>
-<h2 id="1-summary"><a class="header-anchor" href="#1-summary">¶</a>1. Summary</h2>
+        <h1 id="matching-network-for-one-shot-learning">0. Matching Network for One Shot Learning</h1>
+<h2 id="summary">1. Summary</h2>
 <p>This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feature space not just a single sample in the support set. Given a query image, the predict output is the weighted sum of the samples in the support set.</p>
 <a id="more"></a>
-<h2 id="2-reaserch-object"><a class="header-anchor" href="#2-reaserch-object">¶</a>2. Reaserch Object</h2>
+<h2 id="reaserch-object">2. Reaserch Object</h2>
 <p>Learning from a few examples, one-shot learning</p>
-<h2 id="3-problem-statement"><a class="header-anchor" href="#3-problem-statement">¶</a>3. Problem Statement</h2>
+<h2 id="problem-statement">3. Problem Statement</h2>
 <p>Train a classifer, test with a few(eg. 1-shot, 5-shot) queries(images) of unknown classes.</p>
-<h2 id="4-methods"><a class="header-anchor" href="#4-methods">¶</a>4. Methods</h2>
+<h2 id="methods">4. Methods</h2>
 <p>attention, memory</p>
 <ul>
-<li>overall architecture<br>
-<img src="leanote://file/getImage?fileId=5defb14441286d190c000001" alt="">
+<li>overall architecture <img src="leanote://file/getImage?fileId=5defb14441286d190c000001" />
 <ul>
-<li>the simplest form to compuete $\hat{y}$ of the test example $\hat x$:<br>
-$\hat y = \sum\limits_{i=1}^ka(\hat{x},x_i)y_i$<br>
-$x_i$ and $y_i$ are the samples and labels from support set, $a$ is an <strong>attention mechanism</strong></li>
-</ul>
-</li>
+<li>the simplest form to compuete <span class="math inline">\(\hat{y}\)</span> of the test example <span class="math inline">\(\hat x\)</span>: <span class="math inline">\(\hat y = \sum\limits_{i=1}^ka(\hat{x},x_i)y_i\)</span> <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> are the samples and labels from support set, <span class="math inline">\(a\)</span> is an <strong>attention mechanism</strong></li>
+</ul></li>
 <li>the choose of attention kernel
 <ul>
-<li>the simplest form is used in this paper:<br>
-$a(\hat{x},x_i)=e^{c(f(\hat{x}),g(x_j))}/\sum _{j=1}<sup>ke</sup>{c(f(\hat{x}),g(x_j))}$</li>
-<li>$f$ and $g$ are embedding functions, which can be CNN for image classification task and word embedding for language task. $c$ is the cosine distance.</li>
-</ul>
-</li>
+<li>the simplest form is used in this paper: <span class="math inline">\(a(\hat{x},x_i)=e^{c(f(\hat{x}),g(x_j))}/\sum _{j=1}^ke^{c(f(\hat{x}),g(x_j))}\)</span></li>
+<li><span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are embedding functions, which can be CNN for image classification task and word embedding for language task. <span class="math inline">\(c\)</span> is the cosine distance.</li>
+</ul></li>
 <li>full context embeddings
 <ul>
-<li>consider all the images of the support set, not just embeding one image at once. Use the bidirectional Long-Short Term Memory to encode $x_i$ <strong>in the context of the support set</strong>.</li>
-<li>play the role of embedding function $f$</li>
+<li>consider all the images of the support set, not just embeding one image at once. Use the bidirectional Long-Short Term Memory to encode <span class="math inline">\(x_i\)</span> <strong>in the context of the support set</strong>.</li>
+<li>play the role of embedding function <span class="math inline">\(f\)</span></li>
+</ul></li>
+<li>training strategy<br />
+task <span class="math inline">\(T\)</span> has the distribution over label set <span class="math inline">\(L\)</span>, first sample a label set <span class="math inline">\(L\)</span> from <span class="math inline">\(T\)</span>, then use <span class="math inline">\(L\)</span> to sample support set <span class="math inline">\(S\)</span> and a batch <span class="math inline">\(B\)</span>(&quot;<strong>batch</strong>&quot; in there means queries for the given support set).</li>
+<li><p>training objective</p>
+<p><span class="math inline">\(\theta = \mathop{\arg\max}_\theta E_{L\sim T}\left[E_{S\sim L, B\sim L}\left[\sum\limits_{(x,y)\in B}\mathop{\log}P_\theta(y|x,S)\right]\right]\)</span></p></li>
 </ul>
-</li>
-<li>training strategy<br>
-task $T$ has the distribution over label set $L$, first sample a label set $L$ from $T$, then use $L$ to sample support set $S$ and a batch $B$(“<strong>batch</strong>” in there means queries for the given support set).</li>
-<li>training objective<br>
-$\theta = \mathop{\arg\max}<em>\theta E</em>{L\sim T}\left[E_{S\sim L, B\sim 		L}\left[\sum\limits_{(x,y)\in B}\mathop{\log}P_\theta(y|x,S)\right]\right]$</li>
-</ul>
-<h2 id="5-evaluate"><a class="header-anchor" href="#5-evaluate">¶</a>5. Evaluate</h2>
+<h2 id="evaluate">5. Evaluate</h2>
 <p>test and train conditions must match</p>
 <ul>
 <li>ran on three data sets: two image classification sets(Omniglot, ImageNet), one language model(Penn Treebank)</li>
 <li>Omniglot:
 <ul>
 <li>Augmented the data set.</li>
-<li>Pick N unseen character classes, <strong>indepedent of alphabet</strong>, as $L$, provide the model with one drawing of each of the N characters as $S\sim L$ and a batch $B\sim L$.</li>
-</ul>
-</li>
+<li>Pick N unseen character classes, <strong>indepedent of alphabet</strong>, as <span class="math inline">\(L\)</span>, provide the model with one drawing of each of the N characters as <span class="math inline">\(S\sim L\)</span> and a batch <span class="math inline">\(B\sim L\)</span>.</li>
+</ul></li>
 <li>ImageNet:
 <ul>
 <li>Get three subdataset of the ImageNet: randImageNet(remove 118 labels at random from training set), dogImageNet(remove dog class), <strong>miniImageNet</strong>. Test on the three subdatasets.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="6-conclusion"><a class="header-anchor" href="#6-conclusion">¶</a>6. Conclusion</h2>
+<h2 id="conclusion">6. Conclusion</h2>
 <ul>
-<li>Fully Conditional Embeddings didn’t seem to help much on the simple dataset, like Omniglot, but on the harder task(miniImageNet), FCE is sensible.</li>
+<li>Fully Conditional Embeddings didn't seem to help much on the simple dataset, like Omniglot, but on the harder task(miniImageNet), FCE is sensible.</li>
 <li>one-shot learning is much easier if you <strong>train</strong> the network to do one-shot learning</li>
 <li>Non-parametric structures in a neural network make it easier for network to remember and adapt to new training sets in the same task.</li>
 </ul>
-<h2 id="7-notes"><a class="header-anchor" href="#7-notes">¶</a>7. Notes</h2>
+<h2 id="notes">7. Notes</h2>
 <ul>
-<li>FCE consider the whole support set $S$ instead of pair-wise comparisons.</li>
-<li>they tested their method trained on Omniglot on the MNIST dataset, acc about 72%</li>
-<li>What’s the loss function of this model?</li>
-<li>Need to know more about FCE’s details.</li>
-</ul>
-<h2 id="8-reference"><a class="header-anchor" href="#8-reference">¶</a>8. Reference</h2>
-<ul>
+<li>FCE consider the whole support set <span class="math inline">\(S\)</span> instead of pair-wise comparisons.</li>
+<li>they tested their method trained on Omniglot on the MNIST dataset, acc about 72%<br />
+</li>
+<li>What's the loss function of this model?</li>
+<li>Need to know more about FCE's details. ## 8. Reference</li>
 <li>O Vinyals, S Bengio, and M Kudlur. Order matters: Sequence to sequence for sets. arXiv preprint arXiv:1511.06391, 2015.</li>
 </ul>
 
@@ -383,7 +372,7 @@ $\theta = \mathop{\arg\max}<em>\theta E</em>{L\sim T}\left[E_{S\sim L, B\sim 		L
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">0. Matching Network for One Shot Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-summary"><span class="toc-number">1.1.</span> <span class="toc-text">¶1. Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-reaserch-object"><span class="toc-number">1.2.</span> <span class="toc-text">¶2. Reaserch Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-problem-statement"><span class="toc-number">1.3.</span> <span class="toc-text">¶3. Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-methods"><span class="toc-number">1.4.</span> <span class="toc-text">¶4. Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-evaluate"><span class="toc-number">1.5.</span> <span class="toc-text">¶5. Evaluate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-conclusion"><span class="toc-number">1.6.</span> <span class="toc-text">¶6. Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-notes"><span class="toc-number">1.7.</span> <span class="toc-text">¶7. Notes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-reference"><span class="toc-number">1.8.</span> <span class="toc-text">¶8. Reference</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#matching-network-for-one-shot-learning"><span class="toc-number">1.</span> <span class="toc-text">0. Matching Network for One Shot Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">1.1.</span> <span class="toc-text">1. Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reaserch-object"><span class="toc-number">1.2.</span> <span class="toc-text">2. Reaserch Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">1.3.</span> <span class="toc-text">3. Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">1.4.</span> <span class="toc-text">4. Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluate"><span class="toc-number">1.5.</span> <span class="toc-text">5. Evaluate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">1.6.</span> <span class="toc-text">6. Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">1.7.</span> <span class="toc-text">7. Notes</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
