@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="环境配置," />
 
 
 
@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="UESTC, Computer Vision, Data Intelligence Group">
-<meta property="og:type" content="website">
-<meta property="og:title" content="patrolli的博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta name="description" content="突然心血来潮想搭建一个自己的博客，此前我有在博客园写一些博客的习惯，但看到那些简洁漂亮的个人博客，我也有些心痒想自己搭建一个。今天刚好在B站看到UP主CodeSheep发的一个个人博客搭建指南的视频，于是跟着视频自己也做了一个，虽然视频只有20分钟，但却花了我整整一个下午才勉强算是把博客搭建起来了，我在此记录一下这个过程，以及在中途遇到问题后在网上找到的相应的解决方法，希望对之后想搭建个人博客的小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+GitHub个人博客搭建">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;19-12-11-01&#x2F;index.html">
 <meta property="og:site_name" content="patrolli的博客">
-<meta property="og:description" content="UESTC, Computer Vision, Data Intelligence Group">
+<meta property="og:description" content="突然心血来潮想搭建一个自己的博客，此前我有在博客园写一些博客的习惯，但看到那些简洁漂亮的个人博客，我也有些心痒想自己搭建一个。今天刚好在B站看到UP主CodeSheep发的一个个人博客搭建指南的视频，于是跟着视频自己也做了一个，虽然视频只有20分钟，但却花了我整整一个下午才勉强算是把博客搭建起来了，我在此记录一下这个过程，以及在中途遇到问题后在网上找到的相应的解决方法，希望对之后想搭建个人博客的小">
+<meta property="article:published_time" content="2019-12-11T11:49:00.000Z">
+<meta property="article:modified_time" content="2019-12-11T13:07:19.390Z">
 <meta property="article:author" content="patrolli">
-<meta property="article:tag" content="Programmer">
-<meta property="article:tag" content="computer vision">
-<meta property="article:tag" content=" machine learning">
+<meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/11/19-12-11-01/"/>
 
 
 
 
 
-  <title>patrolli的博客</title>
+  <title>Hexo+GitHub个人博客搭建 | patrolli的博客</title>
   
 
 
@@ -144,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +237,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/11/19-12-11-01/" itemprop="url">Hexo+GitHub个人博客搭建</a></h1>
+          <h1 class="post-title" itemprop="name headline">Hexo+GitHub个人博客搭建</h1>
         
 
         <div class="post-meta">
@@ -322,9 +319,7 @@
       
 
       
-        
-          
-            <p>突然心血来潮想搭建一个自己的博客，此前我有在博客园写一些博客的习惯，但看到那些简洁漂亮的个人博客，我也有些心痒想自己搭建一个。今天刚好在B站看到UP主CodeSheep发的一个个人博客搭建指南的视频，于是跟着视频自己也做了一个，虽然视频只有20分钟，但却花了我整整一个下午才勉强算是把博客搭建起来了，我在此记录一下这个过程，以及在中途遇到问题后在网上找到的相应的解决方法，希望对之后想搭建个人博客的小伙伴有所帮助。（以下内容仅针对windows操作系统）</p>
+        <p>突然心血来潮想搭建一个自己的博客，此前我有在博客园写一些博客的习惯，但看到那些简洁漂亮的个人博客，我也有些心痒想自己搭建一个。今天刚好在B站看到UP主CodeSheep发的一个个人博客搭建指南的视频，于是跟着视频自己也做了一个，虽然视频只有20分钟，但却花了我整整一个下午才勉强算是把博客搭建起来了，我在此记录一下这个过程，以及在中途遇到问题后在网上找到的相应的解决方法，希望对之后想搭建个人博客的小伙伴有所帮助。（以下内容仅针对windows操作系统）</p>
 <h2 id="环境准备">环境准备</h2>
 <p>需要安装Git、Node.js，通过在命令行输入<code>git --version</code>和 <code>node -v</code>查看是否安装有Git和Node.js以及获得安装的版本号。</p>
 <p>同时，为了将博客部署在github上，还需要注册github账号，并将gitbhub账号与本地电脑关联起来。这部分可以参看：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰-Git教程</a></p>
@@ -368,8 +363,6 @@
 <h2 id="最后">最后</h2>
 <p>七零八落地写了一些，毕竟今天花了可以说是一整天的时间在搞这个了，还是很有必要把这些血泪史记在这里，之后博客的内容也会越来越丰富起来。反思起来，我花了很多时间在这些所谓的工具选择上，比如怎么用什么样的编辑器、是用做电子笔记还是就在纸上写笔记等，但无论哪种方式，它们都只是一种承载知识的载体而已，真正有价值的还是学习过程中我们学到的、理解到的知识，花一些时间和精力在学习方法、学习工具上是可以的，但一定不能本末倒置了，算是对自己的一些警勉吧。</p>
 
-          
-        
       
     </div>
     
@@ -384,421 +377,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/article-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="patrolli">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="patrolli的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/11/article-2/" itemprop="url">LaSO--Label-Set Operations networks for multi-lable few-shot learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-11T16:39:52+08:00">
-                2019-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h1 id="laso-label-set-operations-networks-for-multi-lable-few-shot-learning">0.LaSO: Label-Set Operations networks for multi-lable few-shot learning</h1>
-<h2 id="summary">1. Summary</h2>
-<p>This paper focus on the multi-label few-shot learning, where has no prior work of this task. They proposed Label-Set Operations networks, which can generate new multi-label samples in the feature space, this method can be seen as data augmentation techinques.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/11/article-2/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/11/article-2/" rel="next" title="LaSO--Label-Set Operations networks for multi-lable few-shot learning">
+                <i class="fa fa-chevron-left"></i> LaSO--Label-Set Operations networks for multi-lable few-shot learning
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/article-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="patrolli">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="patrolli的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/11/article-1/" itemprop="url">Matching Network for One Shot Learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-11T14:50:49+08:00">
-                2019-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="matching-network-for-one-shot-learning">0. Matching Network for One Shot Learning</h1>
-<h2 id="summary">1. Summary</h2>
-<p>This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feature space not just a single sample in the support set. Given a query image, the predict output is the weighted sum of the samples in the support set.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/11/article-1/#more" rel="contents">
-              Read more &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="patrolli">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="patrolli的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/11/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-11T13:22:43+08:00">
-                2019-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -808,10 +416,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -819,6 +428,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -839,8 +452,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -900,6 +522,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客搭建"><span class="nav-number">2.</span> <span class="nav-text">博客搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换主题配置hexo"><span class="nav-number">3.</span> <span class="nav-text">更换主题&#x2F;配置Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示图片"><span class="nav-number">3.1.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示公式"><span class="nav-number">3.2.</span> <span class="nav-text">显示公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yilia主题"><span class="nav-number">3.3.</span> <span class="nav-text">yilia主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next主题"><span class="nav-number">3.4.</span> <span class="nav-text">next主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1040,6 +678,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1097,26 +739,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
