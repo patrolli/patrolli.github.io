@@ -191,7 +191,7 @@
 <h2 id="methods">4. Methods</h2>
 <p>attention, memory</p>
 <ul>
-<li>overall architecture <img src="leanote://file/getImage?fileId=5defb14441286d190c000001" />
+<li>overall architecture <img src="leanote://file/getImage?fileId=5defb14441286d190c000001">
 <ul>
 <li>the simplest form to compuete <span class="math inline">\(\hat{y}\)</span> of the test example <span class="math inline">\(\hat x\)</span>: <span class="math inline">\(\hat y = \sum\limits_{i=1}^ka(\hat{x},x_i)y_i\)</span> <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> are the samples and labels from support set, <span class="math inline">\(a\)</span> is an <strong>attention mechanism</strong></li>
 </ul></li>
@@ -205,7 +205,7 @@
 <li>consider all the images of the support set, not just embeding one image at once. Use the bidirectional Long-Short Term Memory to encode <span class="math inline">\(x_i\)</span> <strong>in the context of the support set</strong>.</li>
 <li>play the role of embedding function <span class="math inline">\(f\)</span></li>
 </ul></li>
-<li>training strategy<br />
+<li>training strategy<br>
 task <span class="math inline">\(T\)</span> has the distribution over label set <span class="math inline">\(L\)</span>, first sample a label set <span class="math inline">\(L\)</span> from <span class="math inline">\(T\)</span>, then use <span class="math inline">\(L\)</span> to sample support set <span class="math inline">\(S\)</span> and a batch <span class="math inline">\(B\)</span>(&quot;<strong>batch</strong>&quot; in there means queries for the given support set).</li>
 <li><p>training objective</p>
 <p><span class="math inline">\(\theta = \mathop{\arg\max}_\theta E_{L\sim T}\left[E_{S\sim L, B\sim L}\left[\sum\limits_{(x,y)\in B}\mathop{\log}P_\theta(y|x,S)\right]\right]\)</span></p></li>
@@ -233,7 +233,7 @@ task <span class="math inline">\(T\)</span> has the distribution over label set 
 <h2 id="notes">7. Notes</h2>
 <ul>
 <li>FCE consider the whole support set <span class="math inline">\(S\)</span> instead of pair-wise comparisons.</li>
-<li>they tested their method trained on Omniglot on the MNIST dataset, acc about 72%<br />
+<li>they tested their method trained on Omniglot on the MNIST dataset, acc about 72%<br>
 </li>
 <li>What's the loss function of this model?</li>
 <li>Need to know more about FCE's details. ## 8. Reference</li>
@@ -342,6 +342,15 @@ task <span class="math inline">\(T\)</span> has the distribution over label set 
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/12/11/article-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LaSO--Label-Set Operations networks for multi-lable few-shot learning
+        
+      </div>
+    </a>
   
   
     <a href="/2019/12/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
