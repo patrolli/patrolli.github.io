@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | patrolli的博客</title>
+  <title>Matching Network for One Shot Learning | patrolli的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UESTC, Computer Vision, Data Intelligence Group">
-<meta property="og:type" content="website">
-<meta property="og:title" content="patrolli的博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="0. Matching Network for One Shot Learning1. SummaryThis paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feature">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matching Network for One Shot Learning">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;article-1&#x2F;index.html">
 <meta property="og:site_name" content="patrolli的博客">
-<meta property="og:description" content="UESTC, Computer Vision, Data Intelligence Group">
+<meta property="og:description" content="0. Matching Network for One Shot Learning1. SummaryThis paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feature">
+<meta property="og:image" content="leanote:&#x2F;&#x2F;file&#x2F;getImage?fileId&#x3D;5defb14441286d190c000001">
+<meta property="article:published_time" content="2019-12-11T06:50:49.000Z">
+<meta property="article:modified_time" content="2019-12-11T06:55:28.193Z">
 <meta property="article:author" content="patrolli">
-<meta property="article:tag" content="Programmer">
-<meta property="article:tag" content="computer vision">
-<meta property="article:tag" content=" machine learning">
+<meta property="article:tag" content="科研, 论文笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="leanote:&#x2F;&#x2F;file&#x2F;getImage?fileId&#x3D;5defb14441286d190c000001">
   
     <link rel="alternative" href="/atom.xml" title="patrolli的博客" type="application/atom+xml">
   
@@ -158,36 +160,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-article-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/11/article-1/" class="archive-article-date">
-  	<time datetime="2019-12-11T06:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/11/article-1/">Matching Network for One Shot Learning</a>
+    <h1 class="article-title" itemprop="name">
+      Matching Network for One Shot Learning
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/12/11/article-1/" class="archive-article-date">
+  	<time datetime="2019-12-11T06:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0-Matching-Network-for-One-Shot-Learning"><a href="#0-Matching-Network-for-One-Shot-Learning" class="headerlink" title="0. Matching Network for One Shot Learning"></a>0. Matching Network for One Shot Learning</h1><h2 id="1-Summary"><a href="#1-Summary" class="headerlink" title="1. Summary"></a>1. Summary</h2><p>This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feature space not just a single sample in the support set. Given a query image, the predict output is the weighted sum of the samples in the support set. </p>
+<h2 id="2-Reaserch-Object"><a href="#2-Reaserch-Object" class="headerlink" title="2. Reaserch Object"></a>2. Reaserch Object</h2><p>Learning from a few examples, one-shot learning<br>##3. Problem Statement<br>Train a classifer, test with a few(eg. 1-shot, 5-shot) queries(images) of unknown classes.</p>
+<h2 id="4-Methods"><a href="#4-Methods" class="headerlink" title="4. Methods"></a>4. Methods</h2><p>attention, memory</p>
+<ul>
+<li><p>overall architecture<br>  <img src="leanote://file/getImage?fileId=5defb14441286d190c000001" alt=""></p>
+<ul>
+<li>the simplest form to compuete $\hat{y}$ of the test example $\hat x$:<br>  $\hat y = \sum\limits_{i=1}^ka(\hat{x},x_i)y_i$<br>  $x_i$ and $y_i$ are the samples and labels from support set, $a$ is an <strong>attention mechanism</strong></li>
+</ul>
+</li>
+<li><p>the choose of attention kernel</p>
+<ul>
+<li>the simplest form is used in this paper:<br>$a(\hat{x},x_i)=e^{c(f(\hat{x}),g(x_j))}/\sum _{j=1}^ke^{c(f(\hat{x}),g(x_j))}$</li>
+<li>$f$ and $g$ are embedding functions, which can be CNN for image classification task and word embedding for language task. $c$ is the cosine distance.</li>
+</ul>
+</li>
+<li><p>full context embeddings</p>
+<ul>
+<li>consider all the images of the support set, not just embeding one image at once. Use the bidirectional Long-Short Term Memory to encode $x_i$ <strong>in the context of the support set</strong>.</li>
+<li>play the role of embedding function $f$ </li>
+</ul>
+</li>
+<li><p>training strategy<br>  task $T$ has the distribution over label set $L$, first sample a label set $L$ from $T$, then use $L$ to sample support set $S$ and a batch $B$(“<strong>batch</strong>“ in there means queries for the given support set).</p>
+</li>
+<li><p>training objective<br>  $\theta = \mathop{\arg\max}<em>\theta E</em>{L\sim T}\left[E_{S\sim L, B\sim L}\left[\sum\limits_{(x,y)\in B}\mathop{\log}P_\theta(y|x,S)\right]\right]$</p>
+<h2 id="5-Evaluate"><a href="#5-Evaluate" class="headerlink" title="5. Evaluate"></a>5. Evaluate</h2><p>test and train conditions must match</p>
+</li>
+<li><p>ran on three data sets: two image classification sets(Omniglot, ImageNet), one language model(Penn Treebank)</p>
+</li>
+<li><p>Omniglot: </p>
+<ul>
+<li>Augmented the data set. </li>
+<li>Pick N unseen character classes, <strong>indepedent of alphabet</strong>, as $L$, provide the model with one drawing of each of the N characters as $S\sim L$ and a batch $B\sim L$. </li>
+</ul>
+</li>
+<li><p>ImageNet:</p>
+<ul>
+<li>Get three subdataset of the ImageNet: randImageNet(remove 118 labels at random from training set), dogImageNet(remove dog class), <strong>miniImageNet</strong>. Test on the three subdatasets.<h2 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6. Conclusion"></a>6. Conclusion</h2></li>
+</ul>
+</li>
+<li><p>Fully Conditional Embeddings didn’t seem to help much on the simple dataset, like Omniglot, but on the harder task(miniImageNet), FCE is sensible.</p>
+</li>
+<li><p>one-shot learning is much easier if you <strong>train</strong> the network to do one-shot learning</p>
+</li>
+<li><p>Non-parametric structures in a neural network make it easier for network to remember and adapt to new training sets in the same task.</p>
+</li>
+</ul>
+<h2 id="7-Notes"><a href="#7-Notes" class="headerlink" title="7. Notes"></a>7. Notes</h2><ul>
+<li>FCE consider the whole support set $S$ instead of pair-wise comparisons.</li>
+<li>they tested their method trained on Omniglot on the MNIST dataset, acc about 72%  </li>
+<li>What’s the loss function of this model?</li>
+<li>Need to know more about FCE’s details.<h2 id="8-Reference"><a href="#8-Reference" class="headerlink" title="8. Reference"></a>8. Reference</h2></li>
+<li>O Vinyals, S Bengio, and M Kudlur. Order matters: Sequence to sequence for sets. arXiv preprint arXiv:1511.06391, 2015.</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,46 +273,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/11/article-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/11/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-11T05:22:43.115Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/11/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -261,8 +395,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

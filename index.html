@@ -160,6 +160,132 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-article-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/11/article-1/">Matching Network for One Shot Learning</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/11/article-1/" class="archive-article-date">
+  	<time datetime="2019-12-11T06:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0-Matching-Network-for-One-Shot-Learning"><a href="#0-Matching-Network-for-One-Shot-Learning" class="headerlink" title="0. Matching Network for One Shot Learning"></a>0. Matching Network for One Shot Learning</h1><h2 id="1-Summary"><a href="#1-Summary" class="headerlink" title="1. Summary"></a>1. Summary</h2><p>This paper is a metric-based method for few-shot learning task. It uses attention mechanism and considers to embed the whole support set into feature space not just a single sample in the support set. Given a query image, the predict output is the weighted sum of the samples in the support set. </p>
+<h2 id="2-Reaserch-Object"><a href="#2-Reaserch-Object" class="headerlink" title="2. Reaserch Object"></a>2. Reaserch Object</h2><p>Learning from a few examples, one-shot learning<br>##3. Problem Statement<br>Train a classifer, test with a few(eg. 1-shot, 5-shot) queries(images) of unknown classes.</p>
+<h2 id="4-Methods"><a href="#4-Methods" class="headerlink" title="4. Methods"></a>4. Methods</h2><p>attention, memory</p>
+<ul>
+<li><p>overall architecture<br>  <img src="leanote://file/getImage?fileId=5defb14441286d190c000001" alt=""></p>
+<ul>
+<li>the simplest form to compuete $\hat{y}$ of the test example $\hat x$:<br>  $\hat y = \sum\limits_{i=1}^ka(\hat{x},x_i)y_i$<br>  $x_i$ and $y_i$ are the samples and labels from support set, $a$ is an <strong>attention mechanism</strong></li>
+</ul>
+</li>
+<li><p>the choose of attention kernel</p>
+<ul>
+<li>the simplest form is used in this paper:<br>$a(\hat{x},x_i)=e^{c(f(\hat{x}),g(x_j))}/\sum _{j=1}^ke^{c(f(\hat{x}),g(x_j))}$</li>
+<li>$f$ and $g$ are embedding functions, which can be CNN for image classification task and word embedding for language task. $c$ is the cosine distance.</li>
+</ul>
+</li>
+<li><p>full context embeddings</p>
+<ul>
+<li>consider all the images of the support set, not just embeding one image at once. Use the bidirectional Long-Short Term Memory to encode $x_i$ <strong>in the context of the support set</strong>.</li>
+<li>play the role of embedding function $f$ </li>
+</ul>
+</li>
+<li><p>training strategy<br>  task $T$ has the distribution over label set $L$, first sample a label set $L$ from $T$, then use $L$ to sample support set $S$ and a batch $B$(“<strong>batch</strong>“ in there means queries for the given support set).</p>
+</li>
+<li><p>training objective<br>  $\theta = \mathop{\arg\max}<em>\theta E</em>{L\sim T}\left[E_{S\sim L, B\sim L}\left[\sum\limits_{(x,y)\in B}\mathop{\log}P_\theta(y|x,S)\right]\right]$</p>
+<h2 id="5-Evaluate"><a href="#5-Evaluate" class="headerlink" title="5. Evaluate"></a>5. Evaluate</h2><p>test and train conditions must match</p>
+</li>
+<li><p>ran on three data sets: two image classification sets(Omniglot, ImageNet), one language model(Penn Treebank)</p>
+</li>
+<li><p>Omniglot: </p>
+<ul>
+<li>Augmented the data set. </li>
+<li>Pick N unseen character classes, <strong>indepedent of alphabet</strong>, as $L$, provide the model with one drawing of each of the N characters as $S\sim L$ and a batch $B\sim L$. </li>
+</ul>
+</li>
+<li><p>ImageNet:</p>
+<ul>
+<li>Get three subdataset of the ImageNet: randImageNet(remove 118 labels at random from training set), dogImageNet(remove dog class), <strong>miniImageNet</strong>. Test on the three subdatasets.<h2 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6. Conclusion"></a>6. Conclusion</h2></li>
+</ul>
+</li>
+<li><p>Fully Conditional Embeddings didn’t seem to help much on the simple dataset, like Omniglot, but on the harder task(miniImageNet), FCE is sensible.</p>
+</li>
+<li><p>one-shot learning is much easier if you <strong>train</strong> the network to do one-shot learning</p>
+</li>
+<li><p>Non-parametric structures in a neural network make it easier for network to remember and adapt to new training sets in the same task.</p>
+</li>
+</ul>
+<h2 id="7-Notes"><a href="#7-Notes" class="headerlink" title="7. Notes"></a>7. Notes</h2><ul>
+<li>FCE consider the whole support set $S$ instead of pair-wise comparisons.</li>
+<li>they tested their method trained on Omniglot on the MNIST dataset, acc about 72%  </li>
+<li>What’s the loss function of this model?</li>
+<li>Need to know more about FCE’s details.<h2 id="8-Reference"><a href="#8-Reference" class="headerlink" title="8. Reference"></a>8. Reference</h2></li>
+<li>O Vinyals, S Bengio, and M Kudlur. Order matters: Sequence to sequence for sets. arXiv preprint arXiv:1511.06391, 2015.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">科研, 论文笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/11/article-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -326,6 +452,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">科研, 论文笔记</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
