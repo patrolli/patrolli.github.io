@@ -253,6 +253,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/19-12-13-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="patrolli">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="patrolli的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/19-12-13-01/" itemprop="url">PyTorch MathOperation API总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T16:04:00+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="pytorch-math-operations">Pytorch Math operations</h1>
+<h2 id="pointwise-ops">Pointwise Ops</h2>
+<h3 id="基本运算">基本运算</h3>
+<ul>
+<li><code>torch.add()</code>
+<ul>
+<li><code>torch.add(input, other, out=None)</code>--执行加法，out=input+other</li>
+<li><code>torch.add(input, other, alpha=1, out=None)</code>--out=input + alpha x other</li>
+</ul></li>
+<li><code>torch.abs(input, out=None)</code>--求绝对值，返回Tensor</li>
+<li><code>torch.div(input, other, out=None)</code>--除法运算，这里的other可以是一个标量或者是一个张量</li>
+<li><p><code>torch.fmod(input, other, out=None)</code>--input中的每个数据对other取余，余数和input中的被除数符号相同</p></li>
+<li><code>torch.mul(input, other, out=None)</code>--相乘，<span class="math inline">\(out_i = input_i \times other\)</span>或者<span class="math inline">\(out_i = input_i \times other_i\)</span></li>
+<li><code>torch.neg(input, out=None)</code>--对每个元素乘以-1</li>
+<li><p><code>torch.remainder(input, other, out=None)</code>--input中的每个数据对other取余，余数和除数的符号相同</p></li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/19-12-13-01/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/19-12-11-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,52 +462,14 @@
 
       
         
-          
-            <p>突然心血来潮想搭建一个自己的博客，此前我有在博客园写一些博客的习惯，但看到那些简洁漂亮的个人博客，我也有些心痒想自己搭建一个。今天刚好在B站看到UP主CodeSheep发的一个个人博客搭建指南的视频，于是跟着视频自己也做了一个，虽然视频只有20分钟，但却花了我整整一个下午才勉强算是把博客搭建起来了，我在此记录一下这个过程，以及在中途遇到问题后在网上找到的相应的解决方法，希望对之后想搭建个人博客的小伙伴有所帮助。（以下内容仅针对windows操作系统）</p>
-<h2 id="环境准备">环境准备</h2>
-<p>需要安装Git、Node.js，通过在命令行输入<code>git --version</code>和 <code>node -v</code>查看是否安装有Git和Node.js以及获得安装的版本号。</p>
-<p>同时，为了将博客部署在github上，还需要注册github账号，并将gitbhub账号与本地电脑关联起来。这部分可以参看：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰-Git教程</a></p>
-<h2 id="博客搭建">博客搭建</h2>
-<p>使用Hexo框架来搭建我们的个人博客，跟着这个28分钟的视频一步一步来，就可以得到一个最初版本的个人博客啦</p>
-<p><a href="https://www.bilibili.com/video/av44544186" target="_blank" rel="noopener">手把手教你从0开始搭建自己的个人博客 |无坑版视频教程| hexo</a></p>
-<p>这里总结几个常用的hexo指令：</p>
-<ul>
-<li><code>hexo init</code>-- 在当前所在目录新建一个网站</li>
-<li><code>hexo new [filename]</code>--创建一个名为filename的md文件，它被放在source/_post文件夹之下，这里的名字可以随便取，等到我们用md编辑器去写内容时，可以在编辑器内修改标题。</li>
-<li><code>hexo s</code>--在本地端口预览网站</li>
-<li><code>hexo clean</code>--清除缓存文件和已生成的静态文件，这个指令和<code>hexo g</code>配合使用，当我们对hexo的配置进行修改或添加新的文章到博客上时，都可以先<code>hexo clean</code>再<code>hexo g</code>，生成新的静态页面。</li>
-<li><code>hexo g</code>--生成静态文件</li>
-<li><code>hexo d</code> -- 部署网站，将本地的修改推送到远程</li>
-</ul>
-<h2 id="更换主题配置hexo">更换主题/配置Hexo</h2>
-<p>其实按着上面的视频一步步做基本没有什么问题，很快就能够完成，真正耗费我时间的是在显示图片、显示公式等这些上面视频没有提到的地方，这里我把我遇到的问题和在网上找到的解决方法都贴在这里。</p>
-<h3 id="显示图片">显示图片</h3>
-<p>Markdown显示图片总是一个麻烦的事情，要么将图片保存在本地然后在文章中引用图片的相对路径，要么使用第三方的图床生成外部链接。解决Hexo中显示图片的一个有效方法：<a href="https://www.jianshu.com/p/8d28027fec76" target="_blank" rel="noopener">hexo+github上传图片到博客</a></p>
-<h3 id="显示公式">显示公式</h3>
-<p>通常第一步是修改主题(themes)文件夹中的<code>_config.yml</code>，将里面的<code>mathjax</code>参数设置为true(为了加快渲染速度通常主题是会将这个选项关闭的)。</p>
-<p>对于yilia主题，上述修改后只能显示一些简单的公式，复杂的公式还是无法显示出来，这个问题可以参见<a href="https://zhuanlan.zhihu.com/p/35988761" target="_blank" rel="noopener">Hexo构建blog时渲染LaTeX数学公式的问题</a>，通过更换Markdown引擎来解决</p>
-<p>对于next主题，打开Mathjax开关后，需要在文章的Front-matter中也打开mathjax开关，参见：<a href="https://blog.csdn.net/wgshun616/article/details/81019687" target="_blank" rel="noopener">Hexo 的 Next 主题中渲染 MathJax 数学公式</a> (加上<code>mathjax: true</code>)</p>
-<h3 id="yilia主题">yilia主题</h3>
-<p>在视频中up主演示了将我们博客换成yilia主题的过程，我一开始也是在研究这个主题，但出现一个问题，即是它的<code>tag</code>页面和<code>categories</code>页面在配置后都不能显示内容（一片空白），试了网上的办法都不管用，我也不知道问题出在哪儿，文章分类这个功能对我来说不可或缺，所以在折腾几个小时后放弃了这个主题，但在这个过程中还是找到一些比较有价值的内容。</p>
-<ul>
-<li><p><a href="https://blog.csdn.net/lynnbest/article/details/79845944" target="_blank" rel="noopener">Hexo yilia 主题一揽子使用方案</a> yilia主题在查看所有文章时会出现缺失模块的错误，这里照着它的提示来就OK，包括在执行命令<code>cnpm i hexo-generator-json-content --save</code>时，我遇到了报错：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">F:\myblog&gt;npm i hexo-generator-json-content --save</span><br><span class="line">npm WARN rm not removing F:\myblog\node_modules\.bin\swig.cmd as it wasn&#39;t installed by F:\myblog\node_modules\_swig-templates@2.0.3@swig-templates</span><br><span class="line">npm WARN rm not removing F:\myblog\node_modules\.bin\swig as it wasn&#39;t installed by F:\myblog\node_modules\_swig-templates@2.0.3@swig-templates</span><br><span class="line">npm ERR! path F:\myblog\node_modules\hexo-deployer-git\node_modules\.bin\swig.cmd</span><br><span class="line">npm ERR! code EEXIST</span><br><span class="line">npm ERR! Refusing to delete F:\myblog\node_modules\hexo-deployer-git\node_modules\.bin\swig.cmd: is outside F:\myblog\node_modules\hexo-deployer-git\node_modules\swig-templates and not a link</span><br><span class="line">npm ERR! File exists: F:\myblog\node_modules\hexo-deployer-git\node_modules\.bin\swig.cmd</span><br><span class="line">npm ERR! Move it away, and try again.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\xxx\AppData\Roaming\npm-cache\_logs\2019-12-11T06_25_52_957Z-debug.log</span><br></pre></td></tr></table></figure></p>
-<p>这里就按照报错提示把相应文件移除就OK了。</p></li>
-<li><p><a href="https://blog.csdn.net/Wonz5130/article/details/84666519" target="_blank" rel="noopener">解决 Hexo 搭建博客显示不出分类、标签问题</a> 这个就是我遇到最头疼的问题了，在yilia主题下没有实现出来，只好作罢，这个解决方法可以参考。</p></li>
-<li><p><a href="%5Bhttp://www.lawlite.me/2017/04/13/Hexo-Github%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/%5D(http://www.lawlite.me/2017/04/13/Hexo-Github实现相册功能/)">Hexo+Github实现相册功能</a> 这个还没有尝试，这种可有可无的等到之后有闲的时候再弄吧</p></li>
-</ul>
-<h3 id="next主题">next主题</h3>
-<p>在yilia主题折腾了许久还是没弄出来分类、标签的设置，只好换到next主题，结果很快就配置好了=_= ，而且页面看起来也更加舒服，像文章目录啥的都比yilia来得好看。记录一些<code>next</code>主题的操作</p>
-<ul>
-<li>显示公式：这个在前面已经提到</li>
-<li>一些个性化设置：<a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">hexo的next主题个性化配置教程</a> 、 <a href="https://www.cnblogs.com/zhangxiaochn/p/Hexo_Theme_Next.html" target="_blank" rel="noopener">Hexo Next主题启用及相关设置</a>留着之后看的。。</li>
-<li><a href="https://www.zhihu.com/question/353097489" target="_blank" rel="noopener">hexo换next主题当出现首页和标签的时候，点进去为cannot GET /20%/,如何解决?</a> 遇到的一个问题</li>
-<li><a href="https://blog.csdn.net/loze/article/details/94206726" target="_blank" rel="noopener">Hexo+NexT（零）：最全Hexo+Next搭建博客教程</a> 没有看的教程。。</li>
-</ul>
-<h2 id="最后">最后</h2>
-<p>七零八落地写了一些，毕竟今天花了可以说是一整天的时间在搞这个了，还是很有必要把这些血泪史记在这里，之后博客的内容也会越来越丰富起来。反思起来，我花了很多时间在这些所谓的工具选择上，比如怎么用什么样的编辑器、是用做电子笔记还是就在纸上写笔记等，但无论哪种方式，它们都只是一种承载知识的载体而已，真正有价值的还是学习过程中我们学到的、理解到的知识，花一些时间和精力在学习方法、学习工具上是可以的，但一定不能本末倒置了，算是对自己的一些警勉吧。</p>
-
-          
+          <p>突然心血来潮想搭建一个自己的博客，此前我有在博客园写一些博客的习惯，但看到那些简洁漂亮的个人博客，我也有些心痒想自己搭建一个。今天刚好在B站看到UP主CodeSheep发的一个个人博客搭建指南的视频，于是跟着视频自己也做了一个，虽然视频只有20分钟，但却花了我整整一个下午才勉强算是把博客搭建起来了，我在此记录一下这个过程，以及在中途遇到问题后在网上找到的相应的解决方法，希望对之后想搭建个人博客的小伙伴有所帮助。（以下内容仅针对windows操作系统）</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/11/19-12-11-01/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -855,7 +956,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -877,7 +978,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
