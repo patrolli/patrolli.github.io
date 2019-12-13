@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="科研,论文笔记," />
+  <meta name="keywords" content="PyTorch," />
 
 
 
@@ -79,20 +79,27 @@
 
 
 
-<meta name="description" content="0.LaSO: Label-Set Operations networks for multi-lable few-shot learning 1. Summary This paper focus on the multi-label few-shot learning, where has no prior work of this task. They proposed Label-Se">
+<meta name="description" content="看了下官方手册和网上的一些解释，但还是没太弄明白，于是自己下来在草稿纸上画了一下，然后用程序验证，总算把这两个函数搞懂了些。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LaSO--Label-Set Operations networks for multi-lable few-shot learning">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;article-2&#x2F;index.html">
+<meta property="og:title" content="PyTorch 之torch.cat()和torch.stack()的理解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;index.html">
 <meta property="og:site_name" content="patrolli的博客">
-<meta property="og:description" content="0.LaSO: Label-Set Operations networks for multi-lable few-shot learning 1. Summary This paper focus on the multi-label few-shot learning, where has no prior work of this task. They proposed Label-Se">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;article-2&#x2F;p1.png">
-<meta property="article:published_time" content="2019-12-11T08:39:52.000Z">
-<meta property="article:modified_time" content="2019-12-11T11:13:32.578Z">
+<meta property="og:description" content="看了下官方手册和网上的一些解释，但还是没太弄明白，于是自己下来在草稿纸上画了一下，然后用程序验证，总算把这两个函数搞懂了些。">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p3.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p4.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p9.png">
+<meta property="article:published_time" content="2019-12-13T14:24:00.000Z">
+<meta property="article:modified_time" content="2019-12-13T17:29:40.083Z">
 <meta property="article:author" content="patrolli">
-<meta property="article:tag" content="科研">
-<meta property="article:tag" content="论文笔记">
+<meta property="article:tag" content="PyTorch">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;11&#x2F;article-2&#x2F;p1.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p1.png">
 
 
 
@@ -122,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/11/article-2/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/13/19-12-13-02/"/>
 
 
 
 
 
-  <title>LaSO--Label-Set Operations networks for multi-lable few-shot learning | patrolli的博客</title>
+  <title>PyTorch 之torch.cat()和torch.stack()的理解 | patrolli的博客</title>
   
 
 
@@ -255,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/article-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/19-12-13-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="patrolli">
@@ -272,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LaSO--Label-Set Operations networks for multi-lable few-shot learning</h1>
+          <h1 class="post-title" itemprop="name headline">PyTorch 之torch.cat()和torch.stack()的理解</h1>
         
 
         <div class="post-meta">
@@ -284,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-11T16:39:52+08:00">
-                2019-12-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T22:24:00+08:00">
+                2019-12-13
               </time>
             
 
@@ -322,59 +329,41 @@
       
 
       
-        <h1 id="laso-label-set-operations-networks-for-multi-lable-few-shot-learning">0.LaSO: Label-Set Operations networks for multi-lable few-shot learning</h1>
-<h2 id="summary">1. Summary</h2>
-<p>This paper focus on the multi-label few-shot learning, where has no prior work of this task. They proposed Label-Set Operations networks, which can generate new multi-label samples in the feature space, this method can be seen as data augmentation techinques.</p>
+        <p>看了下官方手册和网上的一些解释，但还是没太弄明白，于是自己下来在草稿纸上画了一下，然后用程序验证，总算把这两个函数搞懂了些。</p>
 <a id="more"></a>
-<h2 id="research-objective">2. Research Objective</h2>
+<p>首先给出两个tensor: a和b，它们的形状都是（1，3，2）</p>
+<p><img src="/2019/12/13/19-12-13-02/p1.png"></p>
+<h4 id="判断tensor维度的方法">判断tensor维度的方法</h4>
+<p>看对应的中括号，有几个左中括号就有几个维度，如：</p>
+<p><img src="/2019/12/13/19-12-13-02/p2.png"></p>
+<p>有三个左括号，那么a就有3个维度</p>
+<h4 id="判断每个维度有多少个元素">判断每个维度有多少个元素</h4>
+<p>对于dim=0，我们找到第一个左中括号，并且找到与之匹配的右中括号，看他们之中有多少个元素（凡是被中括号包裹的视作1个元素，其实就是看配对的中括号中有几个逗号，其中的元素个数就是逗号个数加1）</p>
+<p><img src="/2019/12/13/19-12-13-02/p3.PNG"></p>
+<h4 id="tensor.cat">tensor.cat()</h4>
+<p>将两个（或更多）相同形状的tensor按某一维度(dim)进行拼接，操作是：对两个tensor，将需要拼接的维度中的所有元素接在一起，具体示例如下：</p>
 <ul>
-<li>Find a method to solve the <strong>multi-label few-shot learning</strong> task and demonstrate the its utility for this work.</li>
+<li><p><code>tensor.cat((a,b), dim=0)</code></p>
+<p>找到tensor a和tensor b的第0维中所有的元素，将他们拼在一起：</p>
+<p><img src="/2019/12/13/19-12-13-02/p4.PNG"></p></li>
+<li><p><code>tensor.cat((a,b), dim=1)</code></p>
+<p>同样，找到两个tensor第一维中的所有元素，然后拼在一起：</p>
+<p><img src="/2019/12/13/19-12-13-02/p5.png"></p></li>
+<li><p><code>tensor.cat((a,b), dim=2)</code></p>
+<p><img src="/2019/12/13/19-12-13-02/p6.png"></p></li>
 </ul>
-<h2 id="problem-statement">3. Problem Statement</h2>
+<p>通过以上步骤，我们不难得出结论，对于cat操作，输出的tensor的形状，就是输入的tensor形状在指定维度(dim)上相加即可，输出的tensor总的维度数不会改变，改变的只是相应维度上元素的个数而已。</p>
+<h4 id="tensor.stack">tensor.stack()</h4>
+<p>已经说过对于cat()操作，输出的tensor总的维度数不会改变，而stack()操作则会改变输出tensor总的维度数。假设输入两个tensor，分别是a，b，他们的形状都是(3, 2)，在stack时，我们会先在<strong>指定的dim维度上增加一维，然后在增加的这个维度上对这两个tensor做cat操作</strong>，具体如下：</p>
 <ul>
-<li>It'a combination of multi-lable classfication task and few-shot learning task. It would train the network on the multi-label training set and validate or test it on the dataset which has the catagories unseen during training.</li>
-<li>Need to use the mAP to evaluate the performance.</li>
+<li><p><code>tensor.stack((a,b), dim=0)</code></p>
+<p><img src="/2019/12/13/19-12-13-02/p7.png"></p></li>
+<li><p><code>tensor.stack((a,b), dim=1)</code></p>
+<p><img src="/2019/12/13/19-12-13-02/p8.png"></p></li>
+<li><p><code>tensor.stack((a,b), dim=2)</code></p>
+<p><img src="/2019/12/13/19-12-13-02/p9.png"></p></li>
 </ul>
-<h2 id="methods">4. Methods</h2>
-<ul>
-<li>Schematic <img src="/2019/12/11/article-2/p1.png">
-<ul>
-<li>feature extractor backbone are pre-trained from training set using networks like InceptonV3, ResNet-34</li>
-<li>LaSO network are implemented as Multi-Layer Perceptrons consisting of 3 or 4 blocks.</li>
-</ul></li>
-<li>steps:
-<ul>
-<li>randomly select a pair of images <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, mapping them into the feature space as <span class="math inline">\(F_X\)</span> and <span class="math inline">\(F_Y\)</span>. <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are corresponding set of multiple labels, <span class="math inline">\(L(X), L(Y) \subseteq\mathcal{L}\)</span></li>
-<li>The LaSO network <span class="math inline">\(M_{int}\)</span>, <span class="math inline">\(M_{uni}\)</span> and <span class="math inline">\(M_{sub}\)</span> receive the concatenated <span class="math inline">\(F_X\)</span> and <span class="math inline">\(F_Y\)</span> and are trained to synthesize feature vectors in the same feature space. That mimic the set operations corresponding intersection, union and subtraction.for example, <span class="math inline">\(M_{int}(F_X,F_Y)=Z_{int}\in\mathcal{F}\)</span>,suppose having generateed a new image <span class="math inline">\(I\)</span>, so the feature vector of <span class="math inline">\(I\)</span> is <span class="math inline">\(Z_{int}\)</span>, the multi-label of <span class="math inline">\(I\)</span> is <span class="math inline">\(L(I)=L(X)\cap L(B)\)</span>, same meaning as the two leaving operations.</li>
-<li>source feature vectors, <span class="math inline">\(F_X\)</span>, <span class="math inline">\(F_Y\)</span>, and the outputs of LaSO networks, namely <span class="math inline">\(Z_{int}\)</span>, <span class="math inline">\(Z_{uni}\)</span>, <span class="math inline">\(Z_{sub}\)</span> are fed into a classifier <span class="math inline">\(C\)</span></li>
-</ul></li>
-<li>loss function:
-<ul>
-<li>Need to train two networks, classifier <span class="math inline">\(C\)</span> and LaSO network. Use the BCE(Binary Cross-Entropy) loss. $BCE(s,l) = -_{i}l_ilog(s_i)+(1-l_i)log(1-(s_i)) $ where vector <span class="math inline">\(s\)</span> being the classifier scores, <span class="math inline">\(l\)</span> being the desired(binary) labels vector, and <span class="math inline">\(i\)</span> the class indices. <span class="math inline">\(C_{loss}=BCE(C(F_X),L(X))+BCE(C(F_Y),L(Y))\)</span> <span class="math inline">\(LaSO_{loss} = BCE(C(Z_{int}),L(X)\cap L(Y))+BCE(C(Z_{uni}),L(X)\cup L(Y)) + BCE(C(Z_{sub}), L(X)\setminus L(Y))\)</span> for the LaSO updates the classifier <span class="math inline">\(C\)</span> is kept fixed and only used for passing gradient backwards.</li>
-<li>add a set of Mean Square Error based restruction losses. First is used to enforce symmetry for the symmetric <em>intersection</em> and <em>union</em> operation. The second is used to reduce of mode collapse.</li>
-</ul></li>
-</ul>
-<h2 id="evaluate">5.Evaluate</h2>
-<ul>
-<li>use batch size of 16, initial learning rate of 0.001, learning rate reduced on loss plateau with factor 0.3. On all compared approaches the classifier trained on each of the episodes were trained using 40 SGD epochs. Use Adam optimizer with parameters(0.9, 0.999)</li>
-<li>evaluate on two datasets: MS-COCO, CelebA<br>
-</li>
-<li>episode construction: Because each image has multiple labels, so to form a episode, we need to ensure that 1 example per category appears in the episode for 1-shot task and 5 examples category appears in the episode for 5-shot task. Due to the random nature of the episodes, this balancing is not always possible.</li>
-</ul>
-<h2 id="conclusion">6.Conclusion</h2>
-<ul>
-<li>LaSO networks can generalize to unseen categories and support their use for performing augmentation synthesis for few-shot multi-label learning</li>
-</ul>
-<h2 id="notes">7.Notes</h2>
-<ul>
-<li>This paper also evaluate the label set manipulation capability of the LaSO networks, to make sure this manipulation is useful.</li>
-<li>This paper also compare the approximations set operations(without training) with LaSO networks.</li>
-<li>Although it is a few-shot learning task, the datasets used to training are huge(MS-COCO, CelebA)...</li>
-</ul>
-<h2 id="reference">8.Reference</h2>
-<ul>
-<li>A. J. Ratner, H. R. Ehrenberg, Z. Hussain, J. Dunnmon, and C. R´e. Learning to Compose Domain-Specific Transforma- tions for Data Augmentation. (Nips), 2017.</li>
-</ul>
+<p>所以，对于stack操作，如果我们想知道输出tensor的维度，我们只需要将输入tensor添加一维，然后按照cat()操作来进行就可以了，至于在哪个维度上添加，就取决于参数dim的值。</p>
 
       
     </div>
@@ -392,9 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%A7%91%E7%A0%94/" rel="tag"># 科研</a>
-          
-            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag"># 论文笔记</a>
+            <a href="/tags/PyTorch/" rel="tag"># PyTorch</a>
           
         </div>
       
@@ -407,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/11/article-1/" rel="next" title="Matching Network for One Shot Learning">
-                <i class="fa fa-chevron-left"></i> Matching Network for One Shot Learning
+              <a href="/2019/12/13/19-12-13-01/" rel="next" title="PyTorch MathOperation API总结">
+                <i class="fa fa-chevron-left"></i> PyTorch MathOperation API总结
               </a>
             
           </div>
@@ -416,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/11/19-12-11-01/" rel="prev" title="Hexo+GitHub个人博客搭建">
-                Hexo+GitHub个人博客搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#laso-label-set-operations-networks-for-multi-lable-few-shot-learning"><span class="nav-number">1.</span> <span class="nav-text">0.LaSO: Label-Set Operations networks for multi-lable few-shot learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">1.1.</span> <span class="nav-text">1. Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#research-objective"><span class="nav-number">1.2.</span> <span class="nav-text">2. Research Objective</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-statement"><span class="nav-number">1.3.</span> <span class="nav-text">3. Problem Statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">1.4.</span> <span class="nav-text">4. Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluate"><span class="nav-number">1.5.</span> <span class="nav-text">5.Evaluate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">6.Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#notes"><span class="nav-number">1.7.</span> <span class="nav-text">7.Notes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.8.</span> <span class="nav-text">8.Reference</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断tensor维度的方法"><span class="nav-number">1.</span> <span class="nav-text">判断tensor维度的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断每个维度有多少个元素"><span class="nav-number">2.</span> <span class="nav-text">判断每个维度有多少个元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor.cat"><span class="nav-number">3.</span> <span class="nav-text">tensor.cat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor.stack"><span class="nav-number">4.</span> <span class="nav-text">tensor.stack()</span></a></li></ol></div>
             
 
           </div>
@@ -758,26 +741,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
