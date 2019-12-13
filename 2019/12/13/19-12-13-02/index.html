@@ -85,21 +85,21 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;index.html">
 <meta property="og:site_name" content="patrolli的博客">
 <meta property="og:description" content="看了下官方手册和网上的一些解释，但还是没太弄明白，于是自己下来在草稿纸上画了一下，然后用程序验证，总算把这两个函数搞懂了些。">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p1.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p2.PNG">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p3.PNG">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p4.PNG">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p5.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p6.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p7.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p8.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p9.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p5.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p6.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p7.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p8.PNG">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p9.PNG">
 <meta property="article:published_time" content="2019-12-13T14:24:00.000Z">
-<meta property="article:modified_time" content="2019-12-13T18:09:25.640Z">
+<meta property="article:modified_time" content="2019-12-13T18:36:57.445Z">
 <meta property="article:author" content="patrolli">
 <meta property="article:tag" content="PyTorch">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p1.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;13&#x2F;19-12-13-02&#x2F;p1.PNG">
 
 
 
@@ -332,10 +332,10 @@
         <p>看了下官方手册和网上的一些解释，但还是没太弄明白，于是自己下来在草稿纸上画了一下，然后用程序验证，总算把这两个函数搞懂了些。</p>
 <a id="more"></a>
 <p>首先给出两个tensor: a和b，它们的形状都是（1，3，2）</p>
-<p><img src="/2019/12/13/19-12-13-02/p1.png"></p>
+<p><img src="/2019/12/13/19-12-13-02/p1.PNG"></p>
 <h4 id="判断tensor维度的方法">判断tensor维度的方法</h4>
 <p>看对应的中括号，有几个左中括号就有几个维度，如：</p>
-<p><img src="/2019/12/13/19-12-13-02/p2.png"></p>
+<p><img src="/2019/12/13/19-12-13-02/p2.PNG"></p>
 <p>有三个左括号，那么a就有3个维度</p>
 <h4 id="判断每个维度有多少个元素">判断每个维度有多少个元素</h4>
 <p>对于dim=0，我们找到第一个左中括号，并且找到与之匹配的右中括号，看他们之中有多少个元素（凡是被中括号包裹的视作1个元素，其实就是看配对的中括号中有几个逗号，其中的元素个数就是逗号个数加1）</p>
@@ -348,20 +348,20 @@
 <p><img src="/2019/12/13/19-12-13-02/p4.PNG"></p></li>
 <li><p><code>tensor.cat((a,b), dim=1)</code></p>
 <p>同样，找到两个tensor第一维中的所有元素，然后拼在一起：</p>
-<p><img src="/2019/12/13/19-12-13-02/p5.png"></p></li>
+<p><img src="/2019/12/13/19-12-13-02/p5.PNG"></p></li>
 <li><p><code>tensor.cat((a,b), dim=2)</code></p>
-<p><img src="/2019/12/13/19-12-13-02/p6.png"></p></li>
+<p><img src="/2019/12/13/19-12-13-02/p6.PNG"></p></li>
 </ul>
 <p>通过以上步骤，我们不难得出结论，对于cat操作，输出的tensor的形状，就是输入的tensor形状在指定维度(dim)上相加即可，输出的tensor总的维度数不会改变，改变的只是相应维度上元素的个数而已。</p>
 <h4 id="tensor.stack">tensor.stack()</h4>
 <p>已经说过对于cat()操作，输出的tensor总的维度数不会改变，而stack()操作则会改变输出tensor总的维度数。假设输入两个tensor，分别是a，b，他们的形状都是(3, 2)，在stack时，我们会先在<strong>指定的dim维度上增加一维，然后在增加的这个维度上对这两个tensor做cat操作</strong>，具体如下：</p>
 <ul>
 <li><p><code>tensor.stack((a,b), dim=0)</code></p>
-<p><img src="/2019/12/13/19-12-13-02/p7.png"></p></li>
+<p><img src="/2019/12/13/19-12-13-02/p7.PNG"></p></li>
 <li><p><code>tensor.stack((a,b), dim=1)</code></p>
-<p><img src="/2019/12/13/19-12-13-02/p8.png"></p></li>
+<p><img src="/2019/12/13/19-12-13-02/p8.PNG"></p></li>
 <li><p><code>tensor.stack((a,b), dim=2)</code></p>
-<p><img src="/2019/12/13/19-12-13-02/p9.png"></p></li>
+<p><img src="/2019/12/13/19-12-13-02/p9.PNG"></p></li>
 </ul>
 <p>所以，对于stack操作，如果我们想知道输出tensor的维度，我们只需要将输入tensor添加一维，然后按照cat()操作来进行就可以了，至于在哪个维度上添加，就取决于参数dim的值。</p>
 
